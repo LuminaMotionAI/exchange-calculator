@@ -1,0 +1,114 @@
+/* 
+ * 실시간 환율 계산기 스타일
+ * Toss-inspired minimal design
+ */
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Currency Select Styling */
+.currency-select {
+    min-width: 110px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 36px;
+}
+
+/* Ad Container - CLS Prevention */
+.ad-container {
+    width: 100%;
+    height: 280px;
+    min-height: 280px;
+    background-color: #f3f4f6;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+.currency-select,
+input,
+button {
+    transition: all 0.2s ease;
+}
+
+/* Focus states */
+.currency-select:focus,
+input:focus {
+    box-shadow: 0 0 0 3px rgba(49, 130, 246, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 380px) {
+    .currency-select {
+        min-width: 95px;
+        padding-left: 12px;
+        padding-right: 32px;
+        font-size: 0.8rem;
+    }
+    
+    #from-amount,
+    #to-amount {
+        font-size: 1rem;
+        padding: 0.625rem 0.75rem;
+    }
+}
+
+/* Error state */
+.error {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+/* Success highlight animation */
+@keyframes highlight {
+    0% {
+        background-color: rgba(49, 130, 246, 0.2);
+    }
+    100% {
+        background-color: rgba(49, 130, 246, 0.05);
+    }
+}
+
+.highlight {
+    animation: highlight 0.5s ease;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문 (FAQ) | 환율 계산기</title>
+    <meta name="description" content="환율 계산기 사용법, 환율 업데이트 주기, 지원 통화 등 자주 묻는 질문에 대한 답변입니다.">
+    <meta name="keywords" content="환율FAQ, 환율질문, 환율계산기사용법, 환율문의">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { primary: '#3182f6' } } } }
+    </script>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+    <main class="flex-1">
+        <article class="max-w-4xl mx-auto px-4 py-8">
+            <nav class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-primary">홈</a> › <span class="text-gray-900">FAQ</span>
+            </nav>
+            <header class="text-center mb-10">
+                <span class="text-5xl mb-4 block">❓</span>
+                <h1 class="text-3xl font-bold text-gray-900 mb-3">자주 묻는 질문</h1>
+                <p class="text-gray-500">환율 계산기와 관련된 궁금증을 해결해 드립니다</p>
+            </header>
+            <div class="ad-container mb-10"><span class="text-gray-400 text-sm">광고 로딩 중...</span></div>
+            <div class="space-y-4 mb-12">
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden" open>
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">환율은 얼마나 자주 업데이트
+                        되나요?</summary>
+                    <div class="px-6 pb-4 text-gray-600">본 사이트의 환율 정보는 <strong>5분마다</strong> 자동으로 업데이트됩니다.
+                        ExchangeRate-API를 통해 실시간에 가까운 환율 정보를 제공합니다. 화면 상단에 마지막 업데이트 시간이 표시됩니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">환율 계산기는 무료인가요?
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600">네, <strong>완전히 무료</strong>입니다. 별도의 회원가입이나 결제 없이 모든 기능을 자유롭게
+                        이용하실 수 있습니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">어떤 통화를 지원하나요?
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600">현재 <strong>USD(미국 달러), KRW(한국 원), JPY(일본 엔), EUR(유로)</strong>를
+                        지원합니다. 향후 더 많은 통화를 추가할 예정입니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">표시되는 환율은 은행 환율과
+                        같은가요?</summary>
+                    <div class="px-6 pb-4 text-gray-600">본 사이트는 <strong>미드마켓 환율(중간 환율)</strong>을 표시합니다. 이는 매수/매도 환율의
+                        중간값으로, 실제 은행에서 환전할 때는 스프레드(마진)가 적용되어 다를 수 있습니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">환율 데이터는 어디서
+                        가져오나요?</summary>
+                    <div class="px-6 pb-4 text-gray-600"><strong>ExchangeRate-API</strong>에서 제공하는 환율 데이터를 사용합니다. 이 API는
+                        전 세계 주요 금융 데이터 소스를 기반으로 정확한 환율 정보를 제공합니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">모바일에서도 사용할 수
+                        있나요?</summary>
+                    <div class="px-6 pb-4 text-gray-600">네, 본 사이트는 <strong>반응형 디자인</strong>으로 제작되어 스마트폰, 태블릿, PC 등 모든
+                        기기에서 최적화된 화면으로 이용 가능합니다.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">환율 알림 기능이 있나요?
+                    </summary>
+                    <div class="px-6 pb-4 text-gray-600">현재는 환율 알림 기능을 제공하지 않습니다. 추후 개발 예정이니 조금만 기다려 주세요.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">환율 변동의 원인은
+                        무엇인가요?</summary>
+                    <div class="px-6 pb-4 text-gray-600">환율은 <strong>금리 차이, 경제 성장률, 물가 상승률, 정치적 안정성, 무역수지</strong> 등 다양한
+                        요인에 의해 변동됩니다. 자세한 내용은 <a href="exchange-rate-guide.html" class="text-primary hover:underline">환율
+                            완벽 가이드</a>를 참고하세요.</div>
+                </details>
+                <details class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+                    <summary class="px-6 py-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50">오류나 문의사항은 어디로
+                        연락하나요?</summary>
+                    <div class="px-6 pb-4 text-gray-600">사이트 이용 중 오류가 발생하거나 문의사항이 있으시면 <a href="about.html"
+                            class="text-primary hover:underline">사이트 소개</a> 페이지의 연락처로 문의해 주세요.</div>
+                </details>
+            </div>
+            <section class="border-t border-gray-100 pt-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">관련 글</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="exchange-rate-guide.html" class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100">
+                        <p class="font-medium text-gray-900">환율 완벽 가이드</p>
+                    </a>
+                    <a href="travel-tips.html" class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100">
+                        <p class="font-medium text-gray-900">해외여행 환전 팁</p>
+                    </a>
+                    <a href="about.html" class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100">
+                        <p class="font-medium text-gray-900">사이트 소개</p>
+                    </a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="../js/components.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외환 거래 기초 | FX 트레이딩 입문 가이드</title>
+    <meta name="description" content="외환시장(FX)의 구조, 거래 시간, 주요 용어, 트레이딩 기초를 쉽게 설명합니다. 외환 거래 입문자를 위한 완벽 가이드.">
+    <meta name="keywords" content="외환거래, FX트레이딩, 외환시장, 포렉스, 통화쌍, 레버리지, 스프레드">
+    <link rel="canonical" href="https://exchange.example.com/pages/forex-basics.html">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#3182f6', 'primary-dark': '#1b64da' } } }
+        }
+    </script>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col">
+    <div id="header-placeholder"></div>
+
+    <main class="flex-1">
+        <article class="max-w-4xl mx-auto px-4 py-8">
+            <nav class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-primary">홈</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-900">외환 거래 기초</span>
+            </nav>
+
+            <header class="mb-10">
+                <div class="bg-slate-800 text-white rounded-2xl p-8 mb-6">
+                    <span class="text-5xl mb-4 block">📈</span>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-3">외환 거래 기초</h1>
+                    <p class="text-slate-300 text-lg">FX 트레이딩 입문자를 위한 완벽 가이드</p>
+                </div>
+            </header>
+
+            <div class="ad-container mb-10">
+                <span class="text-gray-400 text-sm">광고 로딩 중...</span>
+            </div>
+
+            <div class="prose max-w-none">
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">외환시장(FX Market)이란?</h2>
+                    <p class="text-gray-600 mb-4">
+                        외환시장(Foreign Exchange Market, FX Market)은 세계에서 가장 큰 금융시장입니다.
+                        하루 거래량이 약 <strong>7조 달러</strong>에 달하며, 24시간 운영됩니다.
+                        개인, 기업, 정부, 금융기관 등 다양한 참여자들이 통화를 사고팝니다.
+                    </p>
+                    <div class="bg-green-50 rounded-xl p-5 mb-6">
+                        <h4 class="font-semibold text-gray-900 mb-2">📊 외환시장 특징</h4>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ 세계 최대 금융시장 (주식시장의 수십 배 규모)</li>
+                            <li>✓ 24시간 거래 가능 (주말 제외)</li>
+                            <li>✓ 높은 유동성 (언제든 거래 가능)</li>
+                            <li>✓ 양방향 거래 (상승/하락 모두 수익 가능)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">외환시장 거래 시간</h2>
+                    <p class="text-gray-600 mb-4">
+                        외환시장은 전 세계 주요 금융 센터가 시차를 두고 열리기 때문에 주 5일 24시간 거래가 가능합니다.
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse bg-white rounded-xl overflow-hidden mb-6">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold">세션</th>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold">한국 시간</th>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold">특징</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">🇦🇺 시드니</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">06:00 - 15:00</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">거래량 적음</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">🇯🇵 도쿄</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">09:00 - 18:00</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">아시아 통화 활발</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">🇬🇧 런던</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">17:00 - 02:00</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">최대 거래량</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 text-sm font-medium">🇺🇸 뉴욕</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">22:00 - 07:00</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600">변동성 높음</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-gray-600 text-sm">💡 런던-뉴욕 세션이 겹치는 22:00~02:00(한국 시간)에 거래가 가장 활발합니다.</p>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">주요 통화쌍</h2>
+                    <p class="text-gray-600 mb-4">외환 거래는 항상 두 통화를 쌍으로 거래합니다. 예: EUR/USD는 유로를 사고 달러를 파는 것입니다.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3 mt-6">메이저 통화쌍 (Major Pairs)</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">EUR/USD</p>
+                            <p class="text-xs text-gray-500">유로/달러</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">USD/JPY</p>
+                            <p class="text-xs text-gray-500">달러/엔</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">GBP/USD</p>
+                            <p class="text-xs text-gray-500">파운드/달러</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">USD/CHF</p>
+                            <p class="text-xs text-gray-500">달러/스위스프랑</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">AUD/USD</p>
+                            <p class="text-xs text-gray-500">호주달러/달러</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-3 text-center">
+                            <p class="font-semibold">USD/CAD</p>
+                            <p class="text-xs text-gray-500">달러/캐나다달러</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">외환 거래 핵심 용어</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white border border-gray-200 rounded-xl p-4">
+                            <h4 class="font-semibold text-gray-900">핍 (Pip)</h4>
+                            <p class="text-gray-600 text-sm">환율의 최소 변동 단위. 대부분 소수점 4자리 (예: 1.1050 → 1.1051 = 1핍)</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4">
+                            <h4 class="font-semibold text-gray-900">스프레드 (Spread)</h4>
+                            <p class="text-gray-600 text-sm">매수가와 매도가의 차이. 거래 비용으로 작용하며, 작을수록 유리</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4">
+                            <h4 class="font-semibold text-gray-900">레버리지 (Leverage)</h4>
+                            <p class="text-gray-600 text-sm">적은 자본으로 큰 거래를 할 수 있게 해주는 도구. 수익과 손실 모두 증폭</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4">
+                            <h4 class="font-semibold text-gray-900">롱/숏 (Long/Short)</h4>
+                            <p class="text-gray-600 text-sm">롱 = 매수 포지션(상승 기대), 숏 = 매도 포지션(하락 기대)</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-xl p-4">
+                            <h4 class="font-semibold text-gray-900">로트 (Lot)</h4>
+                            <p class="text-gray-600 text-sm">거래 단위. 1 스탠다드 로트 = 100,000 단위, 미니 로트 = 10,000 단위</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">초보자를 위한 조언</h2>
+                    <div class="bg-yellow-50 rounded-xl p-6">
+                        <ul class="text-gray-700 space-y-3">
+                            <li><strong>⚠️ 레버리지 주의:</strong> 레버리지는 양날의 검입니다. 초보자는 낮은 레버리지부터 시작하세요.</li>
+                            <li><strong>📚 충분히 공부:</strong> 데모 계좌에서 먼저 연습하세요. 실제 돈을 투자하기 전에 시스템을 익히세요.</li>
+                            <li><strong>💰 리스크 관리:</strong> 한 번의 거래에 전체 자금의 1-2% 이상을 걸지 마세요.</li>
+                            <li><strong>📰 뉴스 체크:</strong> 경제 지표 발표, 중앙은행 결정 등은 환율에 큰 영향을 미칩니다.</li>
+                            <li><strong>🎯 전략 수립:</strong> 감정적 거래를 피하고, 명확한 진입/청산 규칙을 세우세요.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <section class="border-t border-gray-100 pt-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">관련 글</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="exchange-rate-guide.html"
+                        class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors">
+                        <p class="font-medium text-gray-900">환율 완벽 가이드</p>
+                        <p class="text-xs text-gray-500">환율의 기초부터 실전까지</p>
+                    </a>
+                    <a href="remittance-guide.html"
+                        class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors">
+                        <p class="font-medium text-gray-900">해외송금 가이드</p>
+                        <p class="text-xs text-gray-500">저렴하게 송금하는 방법</p>
+                    </a>
+                    <a href="currency-history.html"
+                        class="bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors">
+                        <p class="font-medium text-gray-900">세계 통화 역사</p>
+                        <p class="text-xs text-gray-500">주요 통화의 탄생과 발전</p>
+                    </a>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/components.js"></script>
+</body>
+
+</html>

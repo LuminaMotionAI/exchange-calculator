@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 환율 계산기 | USD KRW JPY EUR 환율 변환</title>
+    <meta name="description" content="USD, KRW, JPY, EUR 간 실시간 환율 계산기. 무료로 정확한 환율 변환과 최신 환율 정보를 확인하세요.">
+    <meta name="keywords" content="환율계산기, 환율, USD, KRW, JPY, EUR, 달러환율, 엔화환율, 유로환율, 실시간환율">
+    <link rel="canonical" href="https://exchange.example.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="실시간 환율 계산기 | 무료 환율 변환">
+    <meta property="og:description" content="USD, KRW, JPY, EUR 간 실시간 환율 계산. 무료로 정확한 환율 정보를 확인하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://exchange.example.com/">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3182f6',
+                        'primary-dark': '#1b64da',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="max-w-4xl mx-auto px-4 py-8">
+            <!-- Hero Section -->
+            <section class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">💱 실시간 환율 계산기</h1>
+                <p class="text-gray-500">USD, KRW, JPY, EUR 간 실시간 환율을 무료로 확인하세요</p>
+            </section>
+
+            <!-- Exchange Rate Info -->
+            <div id="rate-info" class="bg-gray-50 rounded-2xl p-4 mb-6 max-w-md mx-auto">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs text-gray-400">기준: USD</span>
+                    <span id="update-time" class="text-xs text-gray-400">업데이트 중...</span>
+                </div>
+                <div id="rate-list" class="grid grid-cols-3 gap-3">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-400 mb-1">KRW</p>
+                        <p id="rate-krw" class="text-sm font-semibold text-gray-700">--</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-400 mb-1">JPY</p>
+                        <p id="rate-jpy" class="text-sm font-semibold text-gray-700">--</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-400 mb-1">EUR</p>
+                        <p id="rate-eur" class="text-sm font-semibold text-gray-700">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator -->
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8 max-w-md mx-auto">
+                <!-- From Currency -->
+                <div class="mb-4">
+                    <label class="block text-xs text-gray-400 mb-2">보내는 금액</label>
+                    <div class="flex items-center gap-3">
+                        <select id="from-currency"
+                            class="currency-select bg-gray-50 border-0 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 focus:ring-2 focus:ring-primary outline-none">
+                            <option value="USD">🇺🇸 USD</option>
+                            <option value="KRW">🇰🇷 KRW</option>
+                            <option value="JPY">🇯🇵 JPY</option>
+                            <option value="EUR">🇪🇺 EUR</option>
+                        </select>
+                        <input type="number" id="from-amount"
+                            class="flex-1 bg-gray-50 border-0 rounded-xl px-4 py-3 text-right text-lg font-semibold text-gray-900 focus:ring-2 focus:ring-primary outline-none"
+                            placeholder="0" value="1">
+                    </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div class="flex justify-center my-4">
+                    <button id="swap-btn"
+                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white shadow-md hover:bg-primary-dark transition-all hover:scale-110 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- To Currency -->
+                <div>
+                    <label class="block text-xs text-gray-400 mb-2">받는 금액</label>
+                    <div class="flex items-center gap-3">
+                        <select id="to-currency"
+                            class="currency-select bg-gray-50 border-0 rounded-xl px-4 py-3 text-sm font-medium text-gray-700 focus:ring-2 focus:ring-primary outline-none">
+                            <option value="USD">🇺🇸 USD</option>
+                            <option value="KRW" selected>🇰🇷 KRW</option>
+                            <option value="JPY">🇯🇵 JPY</option>
+                            <option value="EUR">🇪🇺 EUR</option>
+                        </select>
+                        <div id="to-amount"
+                            class="flex-1 bg-primary/5 border-2 border-primary/20 rounded-xl px-4 py-3 text-right text-lg font-bold text-primary">
+                            0
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conversion Rate Display -->
+                <div id="conversion-info" class="mt-4 pt-4 border-t border-gray-100 text-center">
+                    <p class="text-xs text-gray-400">1 USD = <span id="conversion-rate">--</span> KRW</p>
+                </div>
+            </div>
+
+            <!-- Ad Container (CLS Prevention) -->
+            <div class="ad-container mb-8 max-w-md mx-auto">
+                <span class="text-gray-400 text-sm">광고 로딩 중...</span>
+            </div>
+
+            <!-- Popular Currency Pairs Section (Wise Style) -->
+            <section class="mb-12">
+                <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">인기 환율 페어</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="pages/usd-krw.html"
+                        class="currency-pair-card bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xl">🇺🇸</span>
+                            <span class="text-gray-400">→</span>
+                            <span class="text-xl">🇰🇷</span>
+                        </div>
+                        <p class="font-semibold text-gray-900">USD → KRW</p>
+                        <p class="text-xs text-gray-500">달러 → 원화</p>
+                    </a>
+                    <a href="pages/usd-jpy.html"
+                        class="currency-pair-card bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xl">🇺🇸</span>
+                            <span class="text-gray-400">→</span>
+                            <span class="text-xl">🇯🇵</span>
+                        </div>
+                        <p class="font-semibold text-gray-900">USD → JPY</p>
+                        <p class="text-xs text-gray-500">달러 → 엔화</p>
+                    </a>
+                    <a href="pages/usd-eur.html"
+                        class="currency-pair-card bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xl">🇺🇸</span>
+                            <span class="text-gray-400">→</span>
+                            <span class="text-xl">🇪🇺</span>
+                        </div>
+                        <p class="font-semibold text-gray-900">USD → EUR</p>
+                        <p class="text-xs text-gray-500">달러 → 유로</p>
+                    </a>
+                    <a href="pages/krw-jpy.html"
+                        class="currency-pair-card bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md hover:border-primary/30 transition-all">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xl">🇰🇷</span>
+                            <span class="text-gray-400">→</span>
+                            <span class="text-xl">🇯🇵</span>
+                        </div>
+                        <p class="font-semibold text-gray-900">KRW → JPY</p>
+                        <p class="text-xs text-gray-500">원화 → 엔화</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Guide Section -->
+            <section class="mb-12">
+                <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">환율 가이드</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a href="pages/exchange-rate-guide.html"
+                        class="guide-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-md hover:border-slate-300 transition-all">
+                        <div class="text-2xl mb-3">📊</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">환율 완벽 가이드</h3>
+                        <p class="text-sm text-gray-500">환율의 의미부터 결정 요인까지</p>
+                    </a>
+                    <a href="pages/travel-tips.html"
+                        class="guide-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-md hover:border-slate-300 transition-all">
+                        <div class="text-2xl mb-3">✈️</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">해외여행 환전 팁</h3>
+                        <p class="text-sm text-gray-500">수수료 절약하는 환전 노하우</p>
+                    </a>
+                    <a href="pages/remittance-guide.html"
+                        class="guide-card bg-slate-50 border border-slate-200 rounded-xl p-5 hover:shadow-md hover:border-slate-300 transition-all">
+                        <div class="text-2xl mb-3">💸</div>
+                        <h3 class="font-semibold text-gray-900 mb-2">해외송금 가이드</h3>
+                        <p class="text-sm text-gray-500">저렴하고 빠른 송금 방법</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- FAQ Preview -->
+            <section class="mb-12">
+                <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">자주 묻는 질문</h2>
+                <div class="bg-gray-50 rounded-2xl p-6 max-w-2xl mx-auto">
+                    <div class="space-y-4">
+                        <details class="bg-white rounded-xl p-4">
+                            <summary class="font-medium text-gray-900 cursor-pointer">환율은 얼마나 자주 업데이트 되나요?</summary>
+                            <p class="mt-3 text-sm text-gray-600">본 사이트의 환율 정보는 5분마다 자동으로 업데이트됩니다. ExchangeRate-API를 통해
+                                실시간에 가까운 환율 정보를 제공합니다.</p>
+                        </details>
+                        <details class="bg-white rounded-xl p-4">
+                            <summary class="font-medium text-gray-900 cursor-pointer">환율 계산기는 무료인가요?</summary>
+                            <p class="mt-3 text-sm text-gray-600">네, 완전히 무료입니다. 별도의 회원가입이나 결제 없이 모든 기능을 자유롭게 이용하실 수
+                                있습니다.</p>
+                        </details>
+                        <details class="bg-white rounded-xl p-4">
+                            <summary class="font-medium text-gray-900 cursor-pointer">어떤 통화를 지원하나요?</summary>
+                            <p class="mt-3 text-sm text-gray-600">현재 USD(미국 달러), KRW(한국 원), JPY(일본 엔), EUR(유럽 유로)를
+                                지원합니다. 향후 더 많은 통화를 추가할 예정입니다.</p>
+                        </details>
+                    </div>
+                    <div class="text-center mt-6">
+                        <a href="pages/faq.html" class="text-primary hover:underline text-sm font-medium">모든 FAQ 보기
+                            →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
