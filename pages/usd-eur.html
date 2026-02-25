@@ -61,68 +61,111 @@
                 <p class="text-gray-500 text-lg">미국 달러(USD)와 유로(EUR) 실시간 환율</p>
             </header>
 
-            <section
-                class="bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 rounded-2xl p-6 mb-8 text-center">
-                <p class="text-sm text-gray-500 mb-2">현재 환율</p>
-                <p class="text-4xl font-bold text-gray-900 mb-2">
-                    1 USD = <span id="live-rate" class="text-indigo-600">--</span> EUR
-                </p>
-                <p id="rate-update-time" class="text-xs text-gray-400">업데이트 중...</p>
-            </section>
+            <!-- TradingView Chart -->
+            <div class="tradingview-widget-container mb-8 rounded-2xl overflow-hidden shadow-sm border border-gray-100"
+                style="height: 400px; width: 100%;">
+                <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px); width:100%;"></div>
+                <script type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                        {
+                            "autosize": true,
+                                "symbol": "FX_IDC:USDEUR",
+                                    "interval": "D",
+                                        "timezone": "Europe/London",
+                                            "theme": "light",
+                                                "style": "2",
+                                                    "locale": "kr",
+                                                        "enable_publishing": false,
+                                                            "hide_top_toolbar": true,
+                                                                "hide_legend": false,
+                                                                    "save_image": false,
+                                                                        "container_id": "tradingview_usdeur"
+                        }
+                    </script>
+            </div>
 
-            <section class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 mb-10">
-                <h2 class="text-lg font-semibold text-gray-900 mb-4">빠른 환율 계산</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm text-gray-500 mb-2">USD (미국 달러)</label>
-                        <input type="number" id="usd-input" value="100"
-                            class="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary outline-none">
+            <!-- Rate Info & Calculator Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <!-- Live Rate Card -->
+                <section
+                    class="bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                    <p class="text-sm text-gray-500 mb-2">현재 실시간 다운로드 환율</p>
+                    <p class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                        1 USD = <span id="live-rate" class="text-indigo-600">--</span> EUR
+                    </p>
+                    <p id="rate-update-time" class="text-xs text-gray-400">업데이트 중...</p>
+                </section>
+
+                <!-- Quick Calculator -->
+                <section class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">빠른 환율 계산 (Mid-market rate)</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-gray-500 mb-2">USD (미국 달러 입력)</label>
+                            <input type="number" id="usd-input" value="100"
+                                class="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 text-lg font-semibold focus:ring-2 focus:ring-primary outline-none transition-shadow">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-500 mb-2">EUR (예상 유로 수령액)</label>
+                            <div id="eur-output"
+                                class="w-full bg-indigo-50 border-2 border-indigo-200 rounded-xl px-4 py-3 text-lg font-bold text-indigo-600 transition-all">
+                                --</div>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm text-gray-500 mb-2">EUR (유로)</label>
-                        <div id="eur-output"
-                            class="w-full bg-indigo-50 border-2 border-indigo-200 rounded-xl px-4 py-3 text-lg font-bold text-indigo-600">
-                            --</div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
             <div class="ad-container mb-10">
 
             </div>
 
-            <section class="prose max-w-none mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">USD/EUR 환율이란?</h2>
-                <p class="text-gray-600 mb-4">
-                    EUR/USD(또는 USD/EUR)는 세계에서 가장 많이 거래되는 통화쌍입니다.
-                    미국 달러는 세계 기축통화이고, 유로는 20개국 이상이 사용하는 유럽의 단일 통화로,
-                    두 통화의 환율은 글로벌 경제의 건강 상태를 나타내는 중요한 지표입니다.
+            <!-- Content Section -->
+            <section class="prose max-w-none mb-10 prose-slate prose-headings:text-gray-900 prose-p:text-gray-600">
+                <h2 class="text-2xl font-bold mb-4">1. 글로벌 넘버원 통화쌍, EUR/USD의 의미</h2>
+                <p class="mb-4">
+                    일반적으로 외환 시장에서는 <strong>EUR/USD(유로/달러)</strong>로 표기하며, 이는 전 세계 일일 외환 거래량의 약 20~30%를 차지하는 압도적인 1위
+                    통화쌍입니다. 기축통화인 달러와 그에 대항하는 유일한 맞수인 유로화의 대결 구도는 글로벌 자금 시장의 유동성을 리드하며, 전 세계 물가 지표와 경제 성장률 트렌드의 바로미터입니다.
+                    (본 계산기는 직관적인 이해를 위해 1 USD당 EUR의 가치인 USD/EUR로 함께 정보를 제공하고 있습니다.)
                 </p>
 
-                <h3 class="text-xl font-semibold text-gray-900 mb-3 mt-8">USD/EUR 환율 변동 요인</h3>
-                <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
-                    <li><strong>미-유럽 금리 차이:</strong> 연준(Fed)과 ECB의 금리 정책 차이</li>
-                    <li><strong>경제 성장률:</strong> 미국과 유로존의 GDP 성장률 비교</li>
-                    <li><strong>인플레이션:</strong> 양 지역의 물가 상승률 차이</li>
-                    <li><strong>지정학적 리스크:</strong> 유럽 내 정치적 불안정성 (브렉시트 등)</li>
-                    <li><strong>무역 정책:</strong> 미-중-유럽 간 무역 관계 변화</li>
+                <h3 class="text-xl font-semibold mb-3 mt-8">2. 유로-달러 환율을 흔드는 거시경제 요인</h3>
+                <ul class="list-disc list-inside space-y-2 mb-6">
+                    <li><strong>Fed(연준) vs ECB(유럽중앙은행) 통화정책 속도차:</strong> 가장 핵심적인 변수입니다. 미국이 유럽보다 선제적으로 금리를 올리거나 더 오래
+                        고금리를 유지할 것으로 예상되면 자본이 미국으로 이동하며 달러 강세(USD/EUR 상승)가 나타납니다.</li>
+                    <li><strong>경제 지표 서프라이즈:</strong> 미국의 비농업고용지수(NFP), 생산자물가지수(PPI)나 유로존의 헤드라인 CPI, 독일의 IFO 기업환경지수 등이
+                        예상치를 우회할 때 이 환율은 초단위로 크게 요동칩니다.</li>
+                    <li><strong>지정학적 에너지 리스크:</strong> 2022년 러시아-우크라이나 전쟁 당시, 러시아산 천연가스 의존도가 절대적이던 유로존 경제가 치명타를 입을 것이란
+                        공포심리에 유로화 가치가 급락하여, 한때 1유로와 1달러가 같아지는 역사적인 '패리티(Parity) 붕괴'가 발생하기도 했습니다.</li>
+                    <li><strong>미국 대선 및 무역 관세 정책:</strong> '미국 우선주의' 정치 기조가 강화되고 유럽산 수입품에 높은 관세를 부과하게 되면, 유로존 수출 경제의 타격이
+                        예상되어 유로화의 약세를 불러옵니다.</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold text-gray-900 mb-3">유로 사용 팁</h3>
-                <div class="bg-indigo-50 rounded-xl p-5 mb-6">
-                    <ul class="text-gray-700 space-y-2">
-                        <li>✓ 유로존 20개국에서 동일하게 사용 가능</li>
-                        <li>✓ 유럽 여행 시 여러 나라에서 환전 없이 사용</li>
-                        <li>✓ 신용카드 사용 비중이 높은 편</li>
-                        <li>✓ 소액은 현금, 대액은 카드가 편리</li>
+                <h3 class="text-xl font-semibold mb-3 mt-8">3. 유럽 여행객을 위한 유로화 실전 환전 가이드</h3>
+                <div class="bg-indigo-50/50 border border-indigo-100 rounded-xl p-5 mb-6">
+                    <p class="text-sm text-indigo-800 mb-3 font-semibold">"유럽 대륙, 현금과 카드의 황금 비율"</p>
+                    <ul class="text-gray-700 space-y-3">
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 font-bold shrink-0">✓</span>
+                            <span><strong>유로화 우대율은 최대 90% 이상:</strong> 주요 통화인 유로(EUR)는 USD, JPY와 함께 은행에서 가장 높은 환율 우대를 받을
+                                수 있습니다. 모바일 뱅킹 '환전지갑' 등을 통해 미리 환전하세요.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 font-bold shrink-0">✓</span>
+                            <span><strong>서유럽 vs 동유럽:</strong> 프랑스, 이탈리아, 스페인, 독일 등은 유로존에 속하며 일상에서 신용카드(컨택트리스) 결제가 매우
+                                보편화되어 있습니다. 애플페이나 트래블 카드의 비중을 늘리세요. 단, 길거리 상점용 소액권(10유로, 20유로) 현금은 필수입니다. 반면 헝가리(포린트),
+                                체코(코루나), 스위스(프랑) 등은 유로를 받지 않거나 잔돈을 현지 통화로 매우 불리하게 주므로 별도 환전이 필요합니다.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-500 font-bold shrink-0">✓</span>
+                            <span><strong>고액권(100유로, 200유로) 환전 주의:</strong> 위조 지폐에 대한 경계로 일반 소매점에서는 100유로 지폐 결제를 거부하는
+                                경우가 많습니다. 가급적 환전소에서 50유로 이하 권종으로 나눠서 받으세요.</span>
+                        </li>
                     </ul>
                 </div>
 
-                <h3 class="text-xl font-semibold text-gray-900 mb-3 mt-8">유로(EUR)의 역사</h3>
-                <p class="text-gray-600 mb-4">
-                    유로는 1999년 전자화폐로 도입되어 2002년 현금 통화로 출범했습니다.
-                    출범 초기 1유로 = 0.85달러 수준이었으나, 2008년에는 1.60달러까지 상승했습니다.
-                    2022년에는 미국 금리 인상으로 20년 만에 처음으로 1:1 패리티(등가)를 기록하기도 했습니다.
+                <p class="text-sm text-gray-500 italic mt-8 border-t border-gray-100 pt-4">
+                    ※ 본 가이드와 실시간 환율 정보는 투자 권유가 아니며 정보 제공의 목적으로만 작성되었습니다. 여행 경비나 해외 송금 환율은 외환 시장의 인터뱅크(Mid-market) 금리에
+                    은행과 송금업체의 마진이 가산된 환율이 적용됨을 유의하시기 바랍니다.
                 </p>
             </section>
 

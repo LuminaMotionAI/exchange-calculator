@@ -43,91 +43,175 @@
             <div class="ad-container mb-10"></div>
             <div class="prose max-w-none">
                 <section class="mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">해외송금 방법 비교</h2>
-                    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden mb-6">
-                        <thead class="bg-gray-100">
-                            <tr>
-                                <th class="px-4 py-3 text-left text-sm">방법</th>
-                                <th class="px-4 py-3 text-left text-sm">수수료</th>
-                                <th class="px-4 py-3 text-left text-sm">소요시간</th>
-                                <th class="px-4 py-3 text-left text-sm">특징</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            <tr>
-                                <td class="px-4 py-3 text-sm font-medium">💚 Wise (와이즈)</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">0.5~1%</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">1~2일</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">실시간 환율, 저렴</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 text-sm font-medium">🏦 은행 송금</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">3~5만원</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">2~5일</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">안전, 고액에 적합</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 text-sm font-medium">🟡 웨스턴유니온</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">변동</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">즉시~1일</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">현금 수령 가능</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-3 text-sm font-medium">💙 페이팔</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">2.9%+</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">즉시</td>
-                                <td class="px-4 py-3 text-sm text-gray-600">온라인 결제 편리</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-                <section class="mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">송금 수수료 구성</h2>
-                    <div class="bg-purple-50 rounded-xl p-5 mb-6">
-                        <ul class="text-gray-700 space-y-2">
-                            <li><strong>송금 수수료:</strong> 은행/서비스별로 고정 금액</li>
-                            <li><strong>환전 마진:</strong> 실제 환율과 적용 환율의 차이</li>
-                            <li><strong>중개 수수료:</strong> 중간 은행 경유 시 발생</li>
-                            <li><strong>수취 수수료:</strong> 수취 은행에서 차감하는 금액</li>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">1. 전통적인 외환 송금의 덫: SWIFT 시스템의 구조</h2>
+                    <p class="text-gray-600 mb-4">
+                        수십 년 동안 해외로 돈을 보내는 유일한 방법은 은행 창구에서 **SWIFT(국제은행간통신협정) 네트워크**를 이용하는 것이었습니다. 하지만 이 방식은 마치 여러 번
+                        비행기를 갈아타는 경유 항공편과 같아서, 돈이 수취인에게 도달하기까지 치러야 할 비용(수수료)과 시간(지연)이 막대합니다. 이 수수료의 구조를 명확히 이해해야 어떻게 절약할
+                        수 있을지 해답이 나옵니다.
+                    </p>
+                    <div class="bg-gray-50 rounded-xl p-6 mb-6 border border-gray-200">
+                        <h4 class="font-semibold text-gray-900 mb-4">🚨 보이지 않는 4단계 수수료 폭탄</h4>
+                        <ul class="text-gray-700 space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold shrink-0">①</span>
+                                <div><strong>송금 수수료 (보내는 은행):</strong> 한국의 은행에서 내 돈을 해외망으로 쏴주는 명목으로 가장 먼저 떼가는 돈입니다. (보통
+                                    5,000원 ~ 10,000원)</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold shrink-0">②</span>
+                                <div><strong>전신료 (Cable Charge):</strong> SWIFT라는 국제 망 서버 텔렉스를 사용하는 통신 비용 명목입니다. (건당
+                                    8,000원 고정)</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold shrink-0">③</span>
+                                <div><strong>중개 수수료 (Intermediary Bank Fee):</strong> 한국 은행과 미국 소도시의 은행이 직접 연결되어 있지 않을
+                                    때, 중간에 뉴욕 씨티은행 같은 거대 중개 은행을 거치며 발생하는 '통행세'입니다. (보통 18~25 USD, <strong>가장 뒷통수를 맞는
+                                        비용</strong>)</div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-red-500 font-bold shrink-0">④</span>
+                                <div><strong>수취 수수료 (받는 은행):</strong> 최종 목적지 은행에서 "해외에서 온 돈을 받았다"며 입금 처리 대가로 떼가는 비용입니다.
+                                    (보통 10~15 USD)</div>
+                            </li>
                         </ul>
                     </div>
-                    <p class="text-gray-600">💡 <strong>팁:</strong> 표면 수수료보다 환전 마진이 더 클 수 있으니 총 비용을 비교하세요.</p>
+                    <p class="text-gray-600 mb-4">
+                        결과적으로 내가 한국에서 100만 원을 보내도, 저 4단계의 수수료를 떼고 나면 미국 수취인의 통장에는 약 94만 원어치의 달러만 찍히게 됩니다. 게다가 은행의 영악한
+                        **'환전 마진(환율 스프레드)'**까지 고려하면 실제 손실액은 훨씬 더 큽니다.
+                    </p>
                 </section>
+
                 <section class="mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">상황별 추천</h2>
-                    <div class="space-y-4">
-                        <div class="bg-white border rounded-xl p-4">
-                            <h4 class="font-semibold text-gray-900">💵 소액 (50만원 이하)</h4>
-                            <p class="text-gray-600 text-sm">Wise, 토스 등 핀테크 서비스 추천. 수수료 대비 효율적.</p>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">2. 게임 체인저: 해외송금 핀테크 서비스 비교</h2>
+                    <p class="text-gray-600 mb-4">
+                        이제 스마트폰 하나면 구시대적인 SWIFT망을 우회하여 극도로 저렴하고, 송금 완료까지 몇 분밖에 안 걸리는 혁신적인 글로벌 핀테크 앱들을 이용할 수 있습니다. 대표적인
+                        선두 주자들을 비교해보겠습니다.
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full border-collapse bg-white rounded-xl overflow-hidden mb-6 shadow-sm border border-gray-100 min-w-[700px]">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 w-1/4">서비스명</th>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900">핵심 원리 및 수수료 정책
+                                    </th>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 w-1/5">소요 시간</th>
+                                    <th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 w-1/4">가장 적합한 타겟
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-green-50/30 transition-colors">
+                                    <td class="px-4 py-4 text-sm font-bold text-green-700">💚 Wise (구 TransferWise)</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600"><strong>구글/네이버 매매기준율('Mid-market rate')
+                                            100% 적용.</strong> 환율에 은행 마진을 단 1원도 숨기지 않고, 명확히 고지된 수수료(통상 송금액의 0.6~1.0%)만
+                                        받습니다. 실제로 돈이 국경을 넘지 않고 각 국가 Wise 계좌에서 이체되는 P2P 방식.</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600 font-medium">대부분 즉시 ~ 최대 2일</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">유학생, 워홀러, 프리랜서, 정기적인 생활비 송금에 <strong>압도적
+                                            1위</strong></td>
+                                </tr>
+                                <tr class="hover:bg-blue-50/30 transition-colors">
+                                    <td class="px-4 py-4 text-sm font-bold text-blue-700">🇰🇷 국내 핀테크 (카카오뱅크, 케이뱅크, 매일경제
+                                        센트비 등)</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">송금 수수료 전액 면제 이벤트가 잦으나, <strong>환율에 약간의
+                                            마진(스프레드)</strong>을 녹여서 이익을 취합니다. 복잡한 영문을 몰라도 국내 앱 생태계에서 클릭 몇 번으로 보낼 수 있는 극강의
+                                        편리함을 자랑합니다.</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600 font-medium">미주/유럽의 경우 1일 내외</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">소액(100만 원 이하) 위주, Wise 가입 절차가 귀찮은 일반 체류자
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-yellow-50/30 transition-colors">
+                                    <td class="px-4 py-4 text-sm font-bold text-yellow-600">🟡 웨스턴유니온 (Western Union)
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">가장 수수료율이 사악(환전 마진 + 높은 고정 수수료)하지만, 수취인이
+                                        <strong>은행 계좌가 없어도 전 세계 수십만 개의 우체국/전당포 등 가맹점에서 단 10분 만에 현찰 수령</strong>이 가능하다는
+                                        독보적 메리트가 있습니다.</td>
+                                    <td class="px-4 py-4 text-sm text-red-500 font-bold">10분 내 (Cash Pickup)</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">동남아/남미 거주 가족에게 긴급 구호 자금이나 현금 송금 시</td>
+                                </tr>
+                                <tr class="hover:bg-blue-50/30 transition-colors">
+                                    <td class="px-4 py-4 text-sm font-bold text-blue-500">💙 PayPal (페이팔)</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">B2B 또는 해외 직구용. 개인 간 송금(Family & Friends)
+                                        수수료 프로모션이 없다면 기준 환율 대비 3~4% 이상의 극악의 수수료를 떼어갑니다. 국제 송금용으로는 절대 추천하지 않습니다.</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600 font-medium">즉시 (계정 간 이동)</td>
+                                    <td class="px-4 py-4 text-sm text-gray-600">이베이(eBay) 결제, 비즈니스 대금 결제 수단</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">3. 송금 금액(Amount)에 따른 필승 전략</h2>
+                    <p class="text-gray-600 mb-6">
+                        송금액의 규모에 따라 가장 효율적인 채널이 바뀝니다. 소액은 핀테크가 유리하지만, 집을 사거나 유학 자금 등 억 단위의 고액은 여전히 전통 은행의 창구 협상력이 필요할 수
+                        있습니다.
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div
+                            class="bg-white border shadow-sm rounded-xl p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2 border-b pb-2">💵 소규모 송금 <span
+                                    class="text-sm font-normal text-gray-500 block">(100만 원 미만)</span></h4>
+                            <p class="text-gray-600 text-sm flex-1 leading-relaxed mt-2">
+                                철저하게 <strong>Wise(와이즈), 토스(Toss), 모인(Moin)</strong> 같은 핀테크 앱이 승리합니다. 핀테크 앱들은 건당 부과되는 고정
+                                송금/중개 수수료가 없고, 금액에 비례하여 0.x%만 부과하므로 고정비의 덫에 걸리지 않습니다.
+                            </p>
                         </div>
-                        <div class="bg-white border rounded-xl p-4">
-                            <h4 class="font-semibold text-gray-900">💰 중액 (50~500만원)</h4>
-                            <p class="text-gray-600 text-sm">Wise와 은행 비교 후 선택. 은행 우대 조건 확인.</p>
+                        <div
+                            class="bg-white border shadow-sm rounded-xl p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2 border-b pb-2">💰 거액 송금 <span
+                                    class="text-sm font-normal text-gray-500 block">(1,000만 원 이상 ~ )</span></h4>
+                            <p class="text-gray-600 text-sm flex-1 leading-relaxed mt-2">
+                                이때는 핀테크 앱의 비례 수수료(0.x%)가 시중은행의 고정 수수료(건당 4~5만 원 대)를 역전하기 시작합니다. 은행 VIP 신분이라면 PB 창구에서 서류
+                                증빙 후 전신료, 중개수수료를 100% 면제받고, 환율스프레드 90% 우대를 받아 <strong>주거래 은행</strong>을 통하는 것이 훨씬 비용이 적게
+                                듭니다.
+                            </p>
                         </div>
-                        <div class="bg-white border rounded-xl p-4">
-                            <h4 class="font-semibold text-gray-900">🏠 고액 (500만원 이상)</h4>
-                            <p class="text-gray-600 text-sm">은행 VIP 우대, 외국환은행 직접 문의. 협상으로 수수료 절감.</p>
-                        </div>
-                        <div class="bg-white border rounded-xl p-4">
-                            <h4 class="font-semibold text-gray-900">⚡ 긴급 송금</h4>
-                            <p class="text-gray-600 text-sm">웨스턴유니온, 머니그램. 현금 즉시 수령 가능.</p>
+                        <div
+                            class="bg-white border shadow-sm rounded-xl p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+                            <h4 class="font-bold text-lg text-gray-900 mb-2 border-b pb-2">🏛 외국환거래법 규제 <span
+                                    class="text-sm font-normal text-gray-500 block">(연간 5만 달러 누적 한도)</span></h4>
+                            <p class="text-gray-600 text-sm flex-1 leading-relaxed mt-2">
+                                한국에서 해외로 <strong>연간 미화 5만 달러</strong>를 초과하여 자본을 반출할 때는 반드시 한국은행이나 지정 거래 외국환은행에 사전 신고 후
+                                서류 증빙(부동산 증빙, 유학 자금 증명서 등)을 마쳐야만 합법적인 송금이 가능합니다. 핀테크 앱으로는 이런 거액 송금 자체가 원천 차단됩니다.
+                            </p>
                         </div>
                     </div>
                 </section>
-                <section class="mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">송금 전 체크리스트</h2>
-                    <div class="bg-gray-50 rounded-xl p-6">
-                        <ul class="space-y-2">
-                            <li class="flex items-start gap-2"><span class="text-green-500">☑️</span><span>수취인 정보 정확히 확인
-                                    (이름, 계좌번호, SWIFT 코드)</span></li>
-                            <li class="flex items-start gap-2"><span class="text-green-500">☑️</span><span>총 비용 비교 (수수료
-                                    + 환전 마진)</span></li>
-                            <li class="flex items-start gap-2"><span class="text-green-500">☑️</span><span>송금 한도 확인 (연간
-                                    5만 달러 등)</span></li>
-                            <li class="flex items-start gap-2"><span class="text-green-500">☑️</span><span>송금 목적 정확히
-                                    기재</span></li>
-                            <li class="flex items-start gap-2"><span class="text-green-500">☑️</span><span>소요 시간
-                                    확인</span></li>
+
+                <section class="mb-12 border-t border-gray-100 pt-10">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 bg-yellow-100/50 inline-block px-3 py-1 rounded">🚨
+                        송금 전 최종 파이널 체크리스트 (수취 사고 방지)</h2>
+                    <div class="bg-gray-50/50 rounded-xl p-6 border border-gray-200 mt-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl">✅</span>
+                                <div>
+                                    <strong class="text-gray-900 drop-shadow-sm">수취인 영문 성명 완벽 일치 여부:</strong> 가장 빈번한 송금
+                                    실패 사유입니다. 여권 상의 영문 이름과 해외 은행 계좌에 등록된 이름(순서, 띄어쓰기 등)이 단 한 글자라도 틀리면 중개 은행에서 돈이 한 달 째
+                                    묶여 있거나 수수료만 뜯기고 반송됩니다.
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl">✅</span>
+                                <div>
+                                    <strong class="text-gray-900">국가별 필수 금융 입력 코드 확인:</strong> 단순히 계좌번호만 알아선 안 됩니다.<br>
+                                    - <span class="text-gray-600 text-sm">미국 (USA):</span> 9자리
+                                    <code>Routing Number</code> (또는 ABA 번호) 필수<br>
+                                    - <span class="text-gray-600 text-sm">유럽 (Eurozone):</span> <code>IBAN</code>
+                                    (알파벳+숫자 20자리 이상 계좌 체계) 번호 필수<br>
+                                    - <span class="text-gray-600 text-sm">그 외 글로벌 공통:</span> 8~11자리의 은행 식별 영문자
+                                    <code>SWIFT CODE (BIC)</code>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-xl">✅</span>
+                                <div>
+                                    <strong class="text-gray-900">도착 금액(수취인 통장 입금액) 기준 계산 여부:</strong> 학비나 렌트비 등 계약 상
+                                    정확히 딱 1,000.00 달러가 입금되어야 할 때, 수취 수수료가 빠져나가 985.00 달러만 들어오면 연체료를 물 수 있습니다. 이럴 땐 모든
+                                    수수료를 <strong>송금인 부담금 (OUR)</strong> 옵션으로 체크하고 약간 넉넉하게 청구되도록 송금해야 안전합니다.
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </section>

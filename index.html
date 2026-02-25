@@ -65,6 +65,39 @@
     <!-- Main Content -->
     <main class="flex-1">
         <div class="max-w-4xl mx-auto px-4 py-8">
+            <!-- Market Ticker -->
+            <div class="tradingview-widget-container mb-8 rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                        {
+                            "symbols": [
+                                {
+                                    "proName": "FX_IDC:USDKRW",
+                                    "title": "USD/KRW"
+                                },
+                                {
+                                    "proName": "FX_IDC:JPYKRW",
+                                    "title": "JPY/KRW"
+                                },
+                                {
+                                    "proName": "FX_IDC:EURKRW",
+                                    "title": "EUR/KRW"
+                                },
+                                {
+                                    "description": "달러 인덱스",
+                                    "proName": "TVC:DXY"
+                                }
+                            ],
+                                "showSymbolLogo": true,
+                                    "isTransparent": false,
+                                        "displayMode": "adaptive",
+                                            "colorTheme": "light",
+                                                "locale": "kr"
+                        }
+                    </script>
+            </div>
+
             <!-- Hero Section -->
             <section class="text-center mb-8">
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">💱 실시간 환율 계산기</h1>
@@ -147,6 +180,29 @@
                     <p class="text-xs text-gray-400">1 USD = <span id="conversion-rate">--</span> KRW</p>
                 </div>
             </div>
+
+            <!-- Market Analysis Section (Rich Content for AdSense Value) -->
+            <section class="mb-12 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3">오늘의 외환 시장 주요 동향 분석</h2>
+                <div class="prose prose-slate max-w-none text-gray-600 space-y-4 text-sm md:text-base leading-relaxed">
+                    <p>
+                        <strong>실시간 환율 변동성 확대:</strong> 최근 글로벌 거시경제 지표 발표와 각국 중앙은행의 금리 결정에 따라 달러(USD), 유로(EUR), 엔화(JPY)
+                        등 주요 통화의 변동성이 크게 확대되고 있습니다. 원/달러(USDKRW) 환율의 경우, 미국의 인플레이션 지표(CPI) 및 고용 보고서 결과에 따라 민감하게 반응하고
+                        있으며, 이는 수출입 기업은 물론 해외 구매를 하는 일반 소비자에게도 직접적인 영향을 미칩니다.
+                    </p>
+                    <p>
+                        <strong>주요 통화별 흐름:</strong> 달러화는 미 연방준비제도(Fed)의 기준금리 방향성에 가장 큰 영향을 받습니다. 반면, 일본 엔(JPY)화는
+                        일본은행(BOJ)의 초완화적 통화정책 유지 여부에 따라 등락을 거듭하고 있습니다. 유로화(EUR)는 유럽연합 전체의 경제 성장률 둔화 우려와 유럽중앙은행(ECB)의 통화
+                        정책의 차별화로 인해 움직임을 보이고 있습니다.
+                    </p>
+                    <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">효과적인 환율 계산기 100% 활용 가이드</h3>
+                    <p>
+                        환율은 매초 단위로 급변동할 수 있습니다. 당사의 실시간 환율 계산기는 <strong>글로벌 외환 시장의 최신 기준 환율</strong>을 가져와 빠르고 정확하게 변환해
+                        드립니다. 은행 송금 환율 파악 전 기준 환율을 확인하거나, 해외 직구, 여행 경비 예산 수립, 외화 투자 전략을 세우는 데 이 도구를 기본 지표로 적극 활용하시길
+                        권장합니다. 정확한 시장 환율(Mid-market rate)을 매일 모니터링하는 것이 성공적인 경제 활동의 첫걸음입니다.
+                    </p>
+                </div>
+            </section>
 
             <!-- Ad Container (CLS Prevention) -->
             <div class="ad-container mb-8 max-w-md mx-auto">
