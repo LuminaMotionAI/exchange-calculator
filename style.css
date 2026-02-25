@@ -44,7 +44,7 @@ input[type="number"] {
     min-height: 280px;
     background-color: #f3f4f6;
     border-radius: 1rem;
-    display: flex;
+    display: none !important;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -52,9 +52,12 @@ input[type="number"] {
 
 /* Loading Animation */
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
@@ -85,7 +88,7 @@ input:focus {
         padding-right: 32px;
         font-size: 0.8rem;
     }
-    
+
     #from-amount,
     #to-amount {
         font-size: 1rem;
@@ -104,6 +107,7 @@ input:focus {
     0% {
         background-color: rgba(49, 130, 246, 0.2);
     }
+
     100% {
         background-color: rgba(49, 130, 246, 0.05);
     }
