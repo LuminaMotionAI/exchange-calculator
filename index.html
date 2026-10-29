@@ -43,6 +43,60 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://exchange-calculator-one.vercel.app/#app",
+          "name": "실시간 환율 계산기",
+          "url": "https://exchange-calculator-one.vercel.app/",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "KRW"
+          },
+          "description": "USD, KRW, JPY, EUR 간 실시간 매매기준 환율을 계산하고 외환 시장 동향과 환전 수수료 절약 가이드를 제공합니다."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://exchange-calculator-one.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "환율은 얼마나 자주 업데이트 되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "본 사이트의 환율 정보는 5분마다 자동으로 업데이트되며 전 세계 글로벌 외환 시장 데이터를 실시간 반영합니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "환전 수수료 우대율이란 무엇인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "환전 우대율은 은행이 매매기준율에 덧붙이는 환전 수수료(스프레드)를 할인해주는 비율을 뜻하며, 90% 우대 시 수수료의 10%만 지불하게 됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "환율 계산기 서비스는 무료인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네, 본 실시간 환율 계산기는 별도의 회원가입이나 결제 절차 없이 누구나 100% 무료로 이용하실 수 있습니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -60,7 +114,125 @@
 
 <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->
-    <div id="header-placeholder"></div>
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-900">
+                <span class="text-2xl">💱</span>
+                <span class="hidden sm:inline">환율계산기</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-1">
+                <a href="/"
+                    class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">홈</a>
+
+                <!-- 환율 가이드 Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1">
+                        환율 가이드
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                        <a href="/pages/exchange-rate-guide.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">환율 완벽
+                            가이드</a>
+                        <a href="/pages/forex-basics.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">외환 거래
+                            기초</a>
+                        <a href="/pages/travel-tips.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">해외여행 환전
+                            팁</a>
+                        <a href="/pages/remittance-guide.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">해외송금
+                            가이드</a>
+                        <a href="/pages/currency-history.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">통화 역사</a>
+                    </div>
+                </div>
+
+                <!-- 통화별 환율 Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-1">
+                        통화별 환율
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-1 w-48 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                        <a href="/pages/usd-krw.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD →
+                            🇰🇷 KRW</a>
+                        <a href="/pages/usd-jpy.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD →
+                            🇯🇵 JPY</a>
+                        <a href="/pages/usd-eur.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD →
+                            🇪🇺 EUR</a>
+                        <a href="/pages/krw-jpy.html"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇰🇷 KRW →
+                            🇯🇵 JPY</a>
+                    </div>
+                </div>
+
+                <a href="/pages/faq.html"
+                    class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">FAQ</a>
+                <a href="/pages/about.html"
+                    class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50 transition-colors">소개</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 rounded-lg hover:bg-gray-100">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="flex flex-col gap-1">
+                <a href="/"
+                    class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50">홈</a>
+
+                <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase">환율 가이드</div>
+                <a href="/pages/exchange-rate-guide.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">환율 완벽 가이드</a>
+                <a href="/pages/forex-basics.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">외환 거래 기초</a>
+                <a href="/pages/travel-tips.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">해외여행 환전 팁</a>
+                <a href="/pages/remittance-guide.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">해외송금 가이드</a>
+                <a href="/pages/currency-history.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">통화 역사</a>
+
+                <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase mt-2">통화별 환율</div>
+                <a href="/pages/usd-krw.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD → 🇰🇷 KRW</a>
+                <a href="/pages/usd-jpy.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD → 🇯🇵 JPY</a>
+                <a href="/pages/usd-eur.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇺🇸 USD → 🇪🇺 EUR</a>
+                <a href="/pages/krw-jpy.html"
+                    class="px-6 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary">🇰🇷 KRW → 🇯🇵 JPY</a>
+
+                <div class="border-t border-gray-100 my-2"></div>
+                <a href="/pages/faq.html"
+                    class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50">FAQ</a>
+                <a href="/pages/about.html"
+                    class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary rounded-lg hover:bg-gray-50">소개</a>
+            </div>
+        </div>
+    </nav>
+</header>
 
     <!-- Main Content -->
     <main class="flex-1">
@@ -183,24 +355,108 @@
 
             <!-- Market Analysis Section (Rich Content for AdSense Value) -->
             <section class="mb-12 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3">오늘의 외환 시장 주요 동향 분석</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-100 pb-3">오늘의 외환 시장 주요 동향 및 거시경제 분석</h2>
                 <div class="prose prose-slate max-w-none text-gray-600 space-y-4 text-sm md:text-base leading-relaxed">
                     <p>
-                        <strong>실시간 환율 변동성 확대:</strong> 최근 글로벌 거시경제 지표 발표와 각국 중앙은행의 금리 결정에 따라 달러(USD), 유로(EUR), 엔화(JPY)
-                        등 주요 통화의 변동성이 크게 확대되고 있습니다. 원/달러(USDKRW) 환율의 경우, 미국의 인플레이션 지표(CPI) 및 고용 보고서 결과에 따라 민감하게 반응하고
-                        있으며, 이는 수출입 기업은 물론 해외 구매를 하는 일반 소비자에게도 직접적인 영향을 미칩니다.
+                        <strong>실시간 환율 변동성과 글로벌 매크로 환경:</strong> 최근 글로벌 외환 시장은 각국 중앙은행의 기준금리 차이, 인플레이션 둔화 속도, 지정학적 리스크에 따라 전례 없는 변동성을 나타내고 있습니다. 원/달러(USD/KRW) 환율의 경우, 미국의 고용 및 물가 지표(CPI, PCE) 발표에 연동되어 1,300원대 중후반에서 높은 수준의 등락을 이어가고 있습니다. 이는 단순한 금융 지표를 넘어 한국의 수출입 기업 채산성과 일반 소비자의 수입 물가, 해외 직구 및 유학 비용에 직접적인 영향을 미칩니다.
                     </p>
                     <p>
-                        <strong>주요 통화별 흐름:</strong> 달러화는 미 연방준비제도(Fed)의 기준금리 방향성에 가장 큰 영향을 받습니다. 반면, 일본 엔(JPY)화는
-                        일본은행(BOJ)의 초완화적 통화정책 유지 여부에 따라 등락을 거듭하고 있습니다. 유로화(EUR)는 유럽연합 전체의 경제 성장률 둔화 우려와 유럽중앙은행(ECB)의 통화
-                        정책의 차별화로 인해 움직임을 보이고 있습니다.
+                        <strong>주요 통화별 흐름과 정책적 차별화:</strong> 달러화는 미 연방준비제도(Fed)의 통화정책 기조에 따라 글로벌 유동성의 향방을 좌우하고 있습니다. 반면, 일본 엔(JPY)화는 수년간 지속되었던 초완화적 마이너스 금리 정책 이후 점진적인 금리 정상화 과정에서 엔캐리 트레이드 청산 압력과 함께 변동성이 급증했습니다. 유럽연합의 유로화(EUR)는 유로존의 경기 둔화 우려와 유럽중앙은행(ECB)의 통화 완화 속도에 맞춰 완만한 흐름을 형성하고 있습니다.
                     </p>
                     <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">효과적인 환율 계산기 100% 활용 가이드</h3>
                     <p>
-                        환율은 매초 단위로 급변동할 수 있습니다. 당사의 실시간 환율 계산기는 <strong>글로벌 외환 시장의 최신 기준 환율</strong>을 가져와 빠르고 정확하게 변환해
-                        드립니다. 은행 송금 환율 파악 전 기준 환율을 확인하거나, 해외 직구, 여행 경비 예산 수립, 외화 투자 전략을 세우는 데 이 도구를 기본 지표로 적극 활용하시길
-                        권장합니다. 정확한 시장 환율(Mid-market rate)을 매일 모니터링하는 것이 성공적인 경제 활동의 첫걸음입니다.
+                        외환 시장의 환율은 초 단위로 변화하는 <strong>매매기준율(Mid-market rate)</strong>을 기준으로 산정됩니다. 시중은행이나 사설 환전소에서 제시하는 ‘현찰 살 때/팔 때’ 환율은 이 매매기준율에 일정 비율의 영업 마진(스프레드)을 가산한 수치입니다. 따라서 해외 송금, 여행 경비 환전, 외화 자산 포트폴리오를 구성할 때는 항상 공인된 실시간 기준 환율을 먼저 확인하고, 본인이 적용받는 수수료 우대율을 계산하는 것이 필수적입니다.
                     </p>
+                </div>
+            </section>
+
+            <!-- Comprehensive Forex & Exchange Knowledge Section -->
+            <section class="mb-12 bg-gradient-to-br from-slate-50 to-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="max-w-3xl mx-auto">
+                    <span class="text-xs font-bold text-primary uppercase tracking-wider block mb-1">Financial Knowledge</span>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">환전 수수료와 스프레드(Spread) 완벽 계산법</h2>
+                    
+                    <div class="space-y-6 text-gray-700 text-sm md:text-base leading-relaxed">
+                        <p>
+                            많은 소비자들이 은행에서 “환율 우대 90%”라는 문구를 접할 때 환전 금액 전체의 90%를 할인해 준다고 오해하곤 합니다. 하지만 환율 우대율은 원금이 아닌 <strong>은행의 마진(스프레드, Spread)</strong>에만 적용됩니다.
+                        </p>
+                        
+                        <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                            <h3 class="font-bold text-gray-900 mb-3 text-base">💡 환전 수수료 계산 공식 및 예시</h3>
+                            <div class="space-y-2 text-sm text-gray-600 font-mono bg-slate-50 p-4 rounded-lg">
+                                <p>• 기본 스프레드 = |현찰 살 때 환율 - 매매기준율|</p>
+                                <p>• 실제 부담 수수료 = 기본 스프레드 × (1 - 우대율 / 100)</p>
+                                <p>• 최종 적용 환율 = 매매기준율 + 실제 부담 수수료</p>
+                            </div>
+                            <p class="mt-3 text-xs text-gray-500">
+                                예: 매매기준율이 1,350원이고 현찰 살 때 환율이 1,375원이라면 기본 스프레드는 25원입니다. 90% 우대 시 수수료는 2.5원(25 × 0.1)만 발생하므로, 1달러당 1,352.5원에 환전하게 됩니다.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                            <div class="bg-white p-5 rounded-xl border border-slate-200">
+                                <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                    <span>💳</span> DCC (해외원화결제) 차단 필수
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    해외 가맹점이나 직구 사이트에서 원화(KRW)로 결제할 경우, 3~8%에 달하는 이중 환전 수수료가 청구됩니다. 반드시 카드사 앱에서 <strong>'해외원화결제 차단 서비스'</strong>를 신청하고 현지 통화(USD, EUR, JPY)로 결제하세요.
+                                </p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-xl border border-slate-200">
+                                <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                                    <span>⚖️</span> 트래블카드 vs 시중은행 환전
+                                </h4>
+                                <p class="text-sm text-gray-600">
+                                    트래블로그, 트래블월렛 등 선불 충전식 외화 카드는 환율 100% 우대(스프레드 0원) 혜택을 제공하여 소액 결제에 유리합니다. 단, 현지 ATM 출금 한도와 원화 재환전 시 수수료를 사전에 확인해야 합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Major Currencies Comparison Table -->
+            <section class="mb-12 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">글로벌 4대 핵심 통화 비교 및 거시 요인</h2>
+                <p class="text-gray-500 text-sm text-center mb-6">주요 통화의 발행 기관, 경제적 위상 및 환율에 미치는 핵심 결정 요인</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-gray-600 border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-gray-900 font-semibold">
+                                <th class="p-3">통화 코드</th>
+                                <th class="p-3">발행국 및 중앙은행</th>
+                                <th class="p-3">글로벌 위상</th>
+                                <th class="p-3">주요 환율 결정 요인</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50/50">
+                                <td class="p-3 font-bold text-gray-900">🇺🇸 USD (달러)</td>
+                                <td class="p-3">미국 연방준비제도 (Fed)</td>
+                                <td class="p-3">세계 1위 기축통화 (외환보유액의 약 60%)</td>
+                                <td class="p-3">미국 기준금리, 인플레이션(CPI), 비농업 고용지표, 달러 인덱스</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50">
+                                <td class="p-3 font-bold text-gray-900">🇰🇷 KRW (원)</td>
+                                <td class="p-3">한국은행 (BOK)</td>
+                                <td class="p-3">아시아 주요 수출 교역 통화</td>
+                                <td class="p-3">무역수지, 외국인 주식 순매수, 반도체 사이클, 미-한 금리차</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50">
+                                <td class="p-3 font-bold text-gray-900">🇯🇵 JPY (엔)</td>
+                                <td class="p-3">일본은행 (BOJ)</td>
+                                <td class="p-3">세계 3대 결제 통화 및 대표적 안전자산</td>
+                                <td class="p-3">BOJ 수익률곡선통제(YCC) 정책, 엔캐리 트레이드 청산, 무역수지</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50">
+                                <td class="p-3 font-bold text-gray-900">🇪🇺 EUR (유로)</td>
+                                <td class="p-3">유럽중앙은행 (ECB)</td>
+                                <td class="p-3">세계 2위 기축통화 (유로존 20개국 단일 통화)</td>
+                                <td class="p-3">유로존 종합 PMI, 독일 경제성장률, ECB 기준금리 정책 차별화</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -312,7 +568,83 @@
     </main>
 
     <!-- Footer -->
-    <div id="footer-placeholder"></div>
+    <footer class="bg-gray-50 border-t border-gray-100 mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Brand -->
+            <div class="md:col-span-1">
+                <a href="/" class="flex items-center gap-2 text-xl font-bold text-gray-900 mb-4">
+                    <span class="text-2xl">💱</span>
+                    <span>환율계산기</span>
+                </a>
+                <p class="text-sm text-gray-500 mb-4">
+                    실시간 환율 정보를 무료로 제공합니다. USD, KRW, JPY, EUR 간 빠르고 정확한 환율 변환.
+                </p>
+                <p class="text-xs text-gray-400">
+                    환율 데이터: <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener"
+                        class="text-primary hover:underline">ExchangeRate-API</a>
+                </p>
+            </div>
+
+            <!-- 통화별 환율 -->
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-4">통화별 환율</h3>
+                <ul class="space-y-2">
+                    <li><a href="/pages/usd-krw.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">USD/KRW 달러-원 환율</a></li>
+                    <li><a href="/pages/usd-jpy.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">USD/JPY 달러-엔 환율</a></li>
+                    <li><a href="/pages/usd-eur.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">USD/EUR 달러-유로 환율</a></li>
+                    <li><a href="/pages/krw-jpy.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">KRW/JPY 원-엔 환율</a></li>
+                </ul>
+            </div>
+
+            <!-- 리소스 -->
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-4">리소스</h3>
+                <ul class="space-y-2">
+                    <li><a href="/pages/exchange-rate-guide.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">환율 완벽 가이드</a></li>
+                    <li><a href="/pages/forex-basics.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">외환 거래 기초</a></li>
+                    <li><a href="/pages/travel-tips.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">해외여행 환전 팁</a></li>
+                    <li><a href="/pages/remittance-guide.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">해외송금 가이드</a></li>
+                    <li><a href="/pages/currency-history.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">통화 역사</a></li>
+                    <li><a href="/pages/faq.html" class="text-sm text-gray-600 hover:text-primary transition-colors">자주
+                            묻는 질문</a></li>
+                </ul>
+            </div>
+
+            <!-- 법적 정보 -->
+            <div>
+                <h3 class="font-semibold text-gray-900 mb-4">법적 정보</h3>
+                <ul class="space-y-2">
+                    <li><a href="/pages/about.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">사이트 소개</a></li>
+                    <li><a href="/pages/privacy.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">개인정보처리방침</a></li>
+                    <li><a href="/pages/terms.html"
+                            class="text-sm text-gray-600 hover:text-primary transition-colors">이용약관</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-500">
+                © 2026 환율계산기. All rights reserved.
+            </p>
+            <p class="text-xs text-gray-400">
+                본 사이트는 정보 제공 목적으로만 운영되며, 투자 조언을 제공하지 않습니다.
+            </p>
+        </div>
+    </div>
+</footer>
 
     <!-- Scripts -->
     <script src="js/components.js"></script>
